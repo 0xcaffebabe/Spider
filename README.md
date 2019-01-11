@@ -35,5 +35,15 @@
    }
 ```
 #
-暂时不考性能问题
+如果进行大量爬取操作,该段代码可能会成为性能瓶颈
+```java
+public URLConnection send(String url,Map<String,String> headers) throws IOException {
+        URLConnection connection = new URL(url).openConnection();
+        for (String key : headers.keySet()){
+            connection.setRequestProperty(key,headers.get(key));
+        }
+        return connection;
+    }
+```
+后期会考虑连接复用，前期暂时不考虑性能问题
 ##
