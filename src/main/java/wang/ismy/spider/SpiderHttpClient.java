@@ -16,8 +16,11 @@ public class SpiderHttpClient {
 
     }
 
-    public URLConnection send(String url) throws IOException {
+    public URLConnection send(String url,Map<String,String> headers) throws IOException {
         URLConnection connection = new URL(url).openConnection();
+        for (String key : headers.keySet()){
+            connection.setRequestProperty(key,headers.get(key));
+        }
         return connection;
     }
 }
