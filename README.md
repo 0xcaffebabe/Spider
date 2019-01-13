@@ -19,17 +19,22 @@
    public class SpiderTest {
        @Test
        public void initTest() throws IOException {
-           Spider spider = new Spider();
-           Request request = new Request();
-           request.setUrl("http://www.baidu.com");
-           //request.header("User-Agent","chrome");
-           spider.request(request,response -> {
-               String html = new String(response.getBody());
-               var list = SpiderUtils.getAllLinks(html);
-               for (var i : list){
-                   System.out.println(i);
-               }
-           });
+            Spider spider = new Spider();
+            Request request = new Request();
+            request.setUrl("https://www.baidu.com");
+            spider.request(request,response -> {
+    
+                for (String s : response.getResponseHeaders().keySet()){
+    
+                    System.out.println(s+" : " +response.getResponseHeaders().get(s));
+                }
+    
+                System.out.println("-----");
+    
+                String html = new String(response.getBody());
+    
+                System.out.println(html);
+            });           
        }
    
    }
