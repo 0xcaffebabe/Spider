@@ -1,4 +1,4 @@
-package wang.ismy.spider;
+package wang.ismy.spider.response;
 
 import java.util.LinkedList;
 import java.util.List;

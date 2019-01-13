@@ -1,4 +1,4 @@
-package wang.ismy.spider;
+package wang.ismy.spider.response;
 
 import lombok.Data;
 
@@ -9,10 +9,6 @@ import java.util.Map;
 public class Response {
 
     private int httpCode;
-
-
-
-    
 
     private Map<String,List<String>> responseHeaders;
 

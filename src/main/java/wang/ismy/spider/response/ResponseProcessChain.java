@@ -1,5 +1,7 @@
-package wang.ismy.spider;
+package wang.ismy.spider.response;
 
+
+import wang.ismy.spider.response.Response;
 
 /*
 *

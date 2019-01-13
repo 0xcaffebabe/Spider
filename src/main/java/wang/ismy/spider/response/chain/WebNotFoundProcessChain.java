@@ -1,4 +1,7 @@
-package wang.ismy.spider;
+package wang.ismy.spider.response.chain;
+
+import wang.ismy.spider.response.Response;
+import wang.ismy.spider.response.ResponseProcessChain;
 
 public class WebNotFoundProcessChain implements ResponseProcessChain {
     @Override

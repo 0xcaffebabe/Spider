@@ -1,4 +1,4 @@
-package wang.ismy.spider;
+package wang.ismy.spider.util;
 
 
 import org.jsoup.Jsoup;

@@ -1,4 +1,4 @@
-package wang.ismy.spider;
+package wang.ismy.spider.request;
 
 import lombok.Data;
 
