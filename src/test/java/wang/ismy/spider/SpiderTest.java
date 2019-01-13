@@ -1,10 +1,9 @@
 package wang.ismy.spider;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
 import org.junit.Test;
+import wang.ismy.spider.request.Request;
+
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 
 
 public class SpiderTest {

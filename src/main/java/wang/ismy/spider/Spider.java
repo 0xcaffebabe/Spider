@@ -1,5 +1,11 @@
 package wang.ismy.spider;
 
+import wang.ismy.spider.request.Request;
+import wang.ismy.spider.request.SpiderHttpClient;
+import wang.ismy.spider.response.Response;
+import wang.ismy.spider.response.ResponseProcessor;
+import wang.ismy.spider.response.chain.WebNotFoundProcessChain;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
