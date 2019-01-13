@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aebddc98-760f-4f4b-bacf-123e8821d763" name="Default" comment="q">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/wang/ismy/spider/SpiderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/wang/ismy/spider/SpiderTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -32,8 +31,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="574">
-                <caret line="34" column="4" lean-forward="true" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
+              <first_editor relative-caret-position="1056">
+                <caret line="45" column="17" lean-forward="true" selection-start-line="45" selection-start-column="17" selection-end-line="45" selection-end-column="17" />
               </first_editor>
               <second_editor />
             </state>
@@ -388,7 +387,7 @@
       <workItem from="1547087746782" duration="11172000" />
       <workItem from="1547108685675" duration="2988000" />
       <workItem from="1547173802394" duration="6767000" />
-      <workItem from="1547366738716" duration="2115000" />
+      <workItem from="1547366738716" duration="3231000" />
     </task>
     <servers />
   </component>
@@ -425,11 +424,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23042000" />
+    <option name="totallyTimeSpent" value="24158000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1376" height="784" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -450,7 +448,7 @@
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.49861497" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.3299566" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32963988" />
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4992764" weight="0.2514706" />
       <window_info anchor="bottom" id="Run with VisualVM" order="7" />
       <window_info anchor="right" id="Theme Preview" order="3" />
@@ -785,8 +783,8 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="574">
-            <caret line="34" column="4" lean-forward="true" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
+          <first_editor relative-caret-position="1056">
+            <caret line="45" column="17" lean-forward="true" selection-start-line="45" selection-start-column="17" selection-end-line="45" selection-end-column="17" />
           </first_editor>
           <second_editor />
         </state>
