@@ -2,16 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aebddc98-760f-4f4b-bacf-123e8821d763" name="Default" comment="q">
-      <change beforePath="$PROJECT_DIR$/src/main/java/wang/ismy/spider/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wang/ismy/spider/request/Request.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wang/ismy/spider/Response.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wang/ismy/spider/response/Response.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wang/ismy/spider/ResponseProcessChain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wang/ismy/spider/response/ResponseProcessChain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wang/ismy/spider/ResponseProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wang/ismy/spider/response/ResponseProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wang/ismy/spider/Spider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wang/ismy/spider/Spider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wang/ismy/spider/SpiderHttpClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wang/ismy/spider/SpiderHttpClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wang/ismy/spider/request/SpiderHttpClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wang/ismy/spider/SpiderUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wang/ismy/spider/util/SpiderUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/wang/ismy/spider/WebNotFoundProcessChain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/wang/ismy/spider/response/chain/WebNotFoundProcessChain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/wang/ismy/spider/SpiderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/wang/ismy/spider/SpiderTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Spider/wang/ismy/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/wang/ismy/spider/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/wang/ismy/spider/Request.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/wang/ismy/spider/Response.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/wang/ismy/spider/ResponseProcessChain.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/wang/ismy/spider/ResponseProcessor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/wang/ismy/spider/Spider.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/wang/ismy/spider/SpiderHttpClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/wang/ismy/spider/SpiderUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/wang/ismy/spider/WebNotFoundProcessChain.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/wang/ismy/spider/SpiderHttpClientTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/wang/ismy/spider/SpiderTest.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -116,23 +119,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="String.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk-11/lib/src.zip!/java.base/java/lang/String.java">
+      <file leaf-file-name="SpiderHttpClient.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/wang/ismy/spider/request/SpiderHttpClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="24">
-              <caret line="136" column="34" selection-start-line="136" selection-start-column="34" selection-end-line="136" selection-end-column="34" />
+            <state relative-caret-position="136">
+              <caret line="10" column="31" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SpiderHttpClient.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/wang/ismy/spider/request/SpiderHttpClient.java">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="10" column="31" lean-forward="true" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="24">
+              <caret line="1" column="6" lean-forward="true" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -182,6 +185,7 @@
         <option value="$PROJECT_DIR$/src/main/java/wang/ismy/spider/Response.java" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/test/java/wang/ismy/spider/SpiderTest.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -216,62 +220,6 @@
             <path>
               <item name="spider" type="b2602c69:ProjectViewProjectNode" />
               <item name="Spider" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="spider" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Spider" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="spider" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Spider" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="spider" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Spider" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="spider" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Spider" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="spider" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="spider" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Spider" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="spider" type="462c0819:PsiDirectoryNode" />
-              <item name="response" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="spider" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Spider" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="spider" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Spider" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="spider" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Spider" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="spider" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -438,7 +386,7 @@
       <workItem from="1547087746782" duration="11172000" />
       <workItem from="1547108685675" duration="2988000" />
       <workItem from="1547173802394" duration="6767000" />
-      <workItem from="1547366738716" duration="4411000" />
+      <workItem from="1547366738716" duration="4700000" />
     </task>
     <servers />
   </component>
@@ -475,7 +423,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25338000" />
+    <option name="totallyTimeSpent" value="25627000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1376" height="784" extended-state="6" />
@@ -843,10 +791,17 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/wang/ismy/spider/request/SpiderHttpClient.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
-          <caret line="10" column="31" lean-forward="true" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
+          <caret line="10" column="31" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="24">
+          <caret line="1" column="6" lean-forward="true" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
         </state>
       </provider>
     </entry>
