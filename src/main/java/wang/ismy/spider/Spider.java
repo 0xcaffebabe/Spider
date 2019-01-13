@@ -13,7 +13,11 @@ public class Spider {
 
     private static final SpiderHttpClient spiderHttpClient = new SpiderHttpClient();
 
-    public Spider(){}
+    private ResponseProcessor responseProcessor = new ResponseProcessor();
+
+    public Spider(){
+        responseProcessor.registerProcessChain(new WebNotFoundProcessChain());
+    }
 
     public Spider(int timeOutSec) {
         this.timeOutSec = timeOutSec;
@@ -22,13 +26,22 @@ public class Spider {
     public void request(Request request, Consumer<Response> consumer) throws IOException {
         URLConnection connection = spiderHttpClient.send(request.getUrl(),request.getHeaders());
         HttpURLConnection urlConnection = (HttpURLConnection)connection;
-
         Response response = new Response();
         response.setHttpCode(urlConnection.getResponseCode());
         response.setResponseHeaders(urlConnection.getHeaderFields());
 
-        InputStream inputStream = connection.getInputStream();
+        InputStream inputStream = null;
+
+        try{
+            inputStream = connection.getInputStream();
+        }catch (Exception e){
+            inputStream = ((HttpURLConnection) connection).getErrorStream();
+        }
+
         response.setBody(inputStream.readAllBytes());
+
+        //得到响应之后，该响应会被传入到一个response处理链当中
+        responseProcessor.process(response);
         consumer.accept(response);
     }
 

@@ -1,7 +1,10 @@
 package wang.ismy.spider;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 import org.junit.Test;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 
 
 public class SpiderTest {
@@ -9,14 +12,25 @@ public class SpiderTest {
     public void initTest() throws IOException {
         Spider spider = new Spider();
         Request request = new Request();
-        request.setUrl("http://www.baidu.com");
-        //request.header("User-Agent","chrome");
+        request.setUrl("https://weibo.com");
         spider.request(request,response -> {
-            String html = new String(response.getBody());
-            var list = SpiderUtils.getAllLinks(html);
-            for (var i : list){
-                System.out.println(i);
+
+            for (String s : response.getResponseHeaders().keySet()){
+
+                System.out.println(s+" : " +response.getResponseHeaders().get(s));
             }
+
+            System.out.println("-----");
+
+            String html = null;
+            try {
+                html = new String(response.getBody(),"gb2312");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+
+            Document document = Jsoup.parse(html);
+            System.out.println(document);
         });
     }
 
