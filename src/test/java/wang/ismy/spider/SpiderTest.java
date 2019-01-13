@@ -11,7 +11,7 @@ public class SpiderTest {
     public void initTest() throws IOException {
         Spider spider = new Spider();
         Request request = new Request();
-        request.setUrl("https://www.baidu.com");
+        request.setUrl("http://www.ismy.wang");
         spider.request(request,response -> {
 
             for (String s : response.getResponseHeaders().keySet()){
