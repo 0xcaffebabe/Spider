@@ -12,7 +12,7 @@ public class SpiderTest {
     public void initTest() throws IOException {
         Spider spider = new Spider();
         Request request = new Request();
-        request.setUrl("https://weibo.com");
+        request.setUrl("https://www.baidu.com");
         spider.request(request,response -> {
 
             for (String s : response.getResponseHeaders().keySet()){
@@ -22,15 +22,9 @@ public class SpiderTest {
 
             System.out.println("-----");
 
-            String html = null;
-            try {
-                html = new String(response.getBody(),"gb2312");
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
+            String html = new String(response.getBody());
 
-            Document document = Jsoup.parse(html);
-            System.out.println(document);
+            System.out.println(html);
         });
     }
 
