@@ -38,7 +38,33 @@
        }
    
    }
+   
+  
 ```
+
+#
+扩展：
+
+可以实现该接口：
+
+```java
+public interface ResponseProcessChain {
+
+    void process(Request request, Response response, Spider spider);
+}
+```
+
+在Spider构造函数中进行注册：
+
+```java
+public Spider(){
+        responseProcessor.registerProcessChain(new WebNotFoundProcessChain());
+        responseProcessor.registerProcessChain(new MovedTemporarilyProcessChain());
+    }
+```
+当一个请求通过request完成之后，会根据注册顺序依次调用相关处理器，
+
+使用者可以根据自身需要分别对request,response,spider等对象进行修改
 #
 如果进行大量爬取操作,该段代码可能会成为性能瓶颈
 ```java
