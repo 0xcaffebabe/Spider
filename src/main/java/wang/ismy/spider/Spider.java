@@ -4,12 +4,14 @@ import wang.ismy.spider.request.Request;
 import wang.ismy.spider.request.SpiderHttpClient;
 import wang.ismy.spider.response.Response;
 import wang.ismy.spider.response.ResponseProcessor;
+import wang.ismy.spider.response.chain.MovedTemporarilyProcessChain;
 import wang.ismy.spider.response.chain.WebNotFoundProcessChain;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URLConnection;
+import java.sql.ResultSet;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -22,13 +24,14 @@ public class Spider {
 
     private static final SpiderHttpClient spiderHttpClient = new SpiderHttpClient();
 
-    private ResponseProcessor responseProcessor = new ResponseProcessor(); // 响应消息处理链
+    private ResponseProcessor responseProcessor = new ResponseProcessor(this); // 响应消息处理链
 
     private ExecutorService executorService = Executors.newFixedThreadPool(10);
 
     private boolean close = false;
     public Spider(){
         responseProcessor.registerProcessChain(new WebNotFoundProcessChain());
+        responseProcessor.registerProcessChain(new MovedTemporarilyProcessChain());
     }
 
     public Spider(int timeOutSec) {
@@ -49,6 +52,19 @@ public class Spider {
         });
 
     }
+
+    public void request(Request request,Consumer<Response> consumer,boolean multiThread){
+        if (multiThread){
+            request(request,consumer);
+        }else{
+            try {
+                sendRequest(request,consumer);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
 
     /*
     * 终止所有任务并退出
@@ -86,7 +102,7 @@ public class Spider {
         response.setBody(inputStream.readAllBytes());
 
         //得到响应之后，该响应会被传入到一个response处理链当中
-        responseProcessor.process(response);
+        responseProcessor.process(request,response);
         consumer.accept(response);
     }
 

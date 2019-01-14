@@ -1,6 +1,8 @@
 package wang.ismy.spider.response;
 
 
+import wang.ismy.spider.Spider;
+import wang.ismy.spider.request.Request;
 import wang.ismy.spider.response.Response;
 
 /*
@@ -9,5 +11,5 @@ import wang.ismy.spider.response.Response;
 * */
 public interface ResponseProcessChain {
 
-    void process(Response response);
+    void process(Request request, Response response, Spider spider);
 }

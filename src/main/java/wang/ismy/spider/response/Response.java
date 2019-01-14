@@ -14,4 +14,9 @@ public class Response {
 
     private byte[] body;
 
+    public void copy(Response response){
+        httpCode = response.getHttpCode();
+        responseHeaders  = response.getResponseHeaders();
+        body = response.getBody();
+    }
 }

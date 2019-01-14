@@ -13,9 +13,13 @@ public class SpiderTest {
 
     @Test
     public void test() throws InterruptedException {
+
+    }
+
+    public static void main(String[] args) {
         Spider spider = new Spider();
         Request request = new Request();
-        request.setUrl("http://www.ismy.wang");
+        request.setUrl("http://www.sina.com");
         spider.request(request,response -> {
 
             for (String s : response.getResponseHeaders().keySet()){
@@ -30,7 +34,7 @@ public class SpiderTest {
             System.out.println(html);
         });
 
-        Thread.sleep(3000);
+
     }
 
 }
