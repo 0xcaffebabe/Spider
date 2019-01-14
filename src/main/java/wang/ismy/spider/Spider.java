@@ -10,27 +10,66 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URLConnection;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 
 
 public class Spider {
 
-    private int timeOutSec = 2000; // 超时时间
+    private int timeOutMS = 2000; // 超时时间
 
     private static final SpiderHttpClient spiderHttpClient = new SpiderHttpClient();
 
-    private ResponseProcessor responseProcessor = new ResponseProcessor();
+    private ResponseProcessor responseProcessor = new ResponseProcessor(); // 响应消息处理链
 
+    private ExecutorService executorService = Executors.newFixedThreadPool(10);
+
+    private boolean close = false;
     public Spider(){
         responseProcessor.registerProcessChain(new WebNotFoundProcessChain());
     }
 
     public Spider(int timeOutSec) {
-        this.timeOutSec = timeOutSec;
+        this.timeOutMS = timeOutSec;
     }
 
-    public void request(Request request, Consumer<Response> consumer) throws IOException {
-        URLConnection connection = spiderHttpClient.send(request.getUrl(),request.getHeaders());
+    public void request(Request request, Consumer<Response> consumer) {
+        if (close){
+            throw new IllegalStateException("当前的spider已被关闭");
+        }
+        executorService.execute(() -> {
+            try {
+                sendRequest(request, consumer);
+            }catch (IOException e){
+                throw new RuntimeException(e);
+            }
+
+        });
+
+    }
+
+    /*
+    * 终止所有任务并退出
+    */
+    public void close(){
+        if (close){
+            throw new IllegalStateException("当前的spider已被关闭");
+        }
+        if (!executorService.isShutdown()){
+            executorService.shutdown();
+            try {
+                executorService.awaitTermination(1000,TimeUnit.MILLISECONDS);
+            } catch (InterruptedException e) {
+                executorService.shutdownNow();
+            }
+            close=true;
+        }
+    }
+
+    private void sendRequest(Request request, Consumer<Response> consumer) throws IOException {
+        URLConnection connection = spiderHttpClient.send(request.getUrl(),request.getHeaders(),timeOutMS);
         HttpURLConnection urlConnection = (HttpURLConnection)connection;
         Response response = new Response();
         response.setHttpCode(urlConnection.getResponseCode());

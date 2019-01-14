@@ -1,5 +1,6 @@
 package wang.ismy.spider;
 
+import org.junit.Assert;
 import org.junit.Test;
 import wang.ismy.spider.request.Request;
 
@@ -7,8 +8,11 @@ import java.io.IOException;
 
 
 public class SpiderTest {
+
+
+
     @Test
-    public void initTest() throws IOException {
+    public void test() throws InterruptedException {
         Spider spider = new Spider();
         Request request = new Request();
         request.setUrl("http://www.ismy.wang");
@@ -25,6 +29,8 @@ public class SpiderTest {
 
             System.out.println(html);
         });
+
+        Thread.sleep(3000);
     }
 
 }

@@ -12,12 +12,14 @@ public class SpiderHttpClient {
 
 
 
+
     public SpiderHttpClient() {
 
     }
 
-    public URLConnection send(String url,Map<String,String> headers) throws IOException {
+    public URLConnection send(String url,Map<String,String> headers,int timeOutMS) throws IOException {
         URLConnection connection = new URL(url).openConnection();
+        connection.setConnectTimeout(timeOutMS);
         for (String key : headers.keySet()){
             connection.setRequestProperty(key,headers.get(key));
         }
