@@ -10,17 +10,14 @@
 
 第一个应用：
 ```java
-          Spider spider = new Spider();
-          Request request = new Request();
-          request.setUrl("http://www.sina.com");
-          spider.request(request,response -> {
-              response
-                      .toTextResponse("utf8")
-                      .css("a")
-                      .forEach(e->{
-                          System.out.println(e.attr("href"));
-                      });
-          });
+        Spider spider = new Spider();
+        Request request = new Request()
+                .url("http://www.baidu.com")
+                .header("User-Agent","baidu spider");
+        spider.request(request,response -> {
+            System.out.println(response
+                    .toTextResponse("utf8"));
+        });
 ```
 
 #
