@@ -3,7 +3,6 @@ package wang.ismy.spider.response;
 
 import wang.ismy.spider.Spider;
 import wang.ismy.spider.request.Request;
-import wang.ismy.spider.response.Response;
 
 /*
 *

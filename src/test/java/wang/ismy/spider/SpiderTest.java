@@ -21,17 +21,12 @@ public class SpiderTest {
         Request request = new Request();
         request.setUrl("http://www.sina.com");
         spider.request(request,response -> {
-
-            for (String s : response.getResponseHeaders().keySet()){
-
-                System.out.println(s+" : " +response.getResponseHeaders().get(s));
-            }
-
-            System.out.println("-----");
-
-            String html = new String(response.getBody());
-
-            System.out.println(html);
+            response
+                    .toTextResponse("utf8")
+                    .css("a")
+                    .forEach(e->{
+                        System.out.println(e.attr("href"));
+                    });
         });
 
 
