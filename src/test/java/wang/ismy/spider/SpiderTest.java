@@ -18,15 +18,12 @@ public class SpiderTest {
 
     public static void main(String[] args) {
         Spider spider = new Spider();
-        Request request = new Request();
-        request.setUrl("http://www.sina.com");
+        Request request = new Request()
+                .url("http://www.baidu.com")
+                .header("User-Agent","baidu spider");
         spider.request(request,response -> {
-            response
-                    .toTextResponse("utf8")
-                    .css("a")
-                    .forEach(e->{
-                        System.out.println(e.attr("href"));
-                    });
+            System.out.println(response
+                    .toTextResponse("utf8"));
         });
 
 

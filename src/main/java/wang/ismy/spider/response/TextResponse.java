@@ -21,4 +21,9 @@ public class TextResponse {
         Document document = Jsoup.parse(content);
         return document.select(selector);
     }
+
+    @Override
+    public String toString(){
+        return content;
+    }
 }

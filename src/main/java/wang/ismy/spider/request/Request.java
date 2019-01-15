@@ -1,9 +1,12 @@
 package wang.ismy.spider.request;
 
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.HashMap;
 import java.util.Map;
+
 
 @Data
 public class Request {
@@ -18,6 +21,17 @@ public class Request {
         headers.put(key,value);
         return this;
     }
+
+    public Request url(String url){
+        this.url = url;
+        return this;
+    }
+
+    public Request body(String body){
+        this.body = body;
+        return this;
+    }
+
 
 
 }
