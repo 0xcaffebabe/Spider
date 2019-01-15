@@ -1,5 +1,7 @@
 package wang.ismy.spider;
 
+import wang.ismy.spider.event.ConnectionTimeOutEvent;
+import wang.ismy.spider.event.impl.DefaultConnectionTimeOutEvent;
 import wang.ismy.spider.request.Request;
 import wang.ismy.spider.request.SpiderHttpClient;
 import wang.ismy.spider.response.Response;
@@ -10,6 +12,7 @@ import wang.ismy.spider.response.chain.WebNotFoundProcessChain;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
+import java.net.SocketTimeoutException;
 import java.net.URLConnection;
 import java.sql.ResultSet;
 import java.util.concurrent.ExecutorService;
@@ -29,6 +32,9 @@ public class Spider {
     private ExecutorService executorService = Executors.newFixedThreadPool(10);
 
     private boolean close = false;
+
+    private ConnectionTimeOutEvent connectionTimeOutEvent = new DefaultConnectionTimeOutEvent();
+
     public Spider(){
         responseProcessor.registerProcessChain(new WebNotFoundProcessChain());
         responseProcessor.registerProcessChain(new MovedTemporarilyProcessChain());
@@ -46,6 +52,10 @@ public class Spider {
             try {
                 sendRequest(request, consumer);
             }catch (IOException e){
+                if (e instanceof SocketTimeoutException){
+                    connectionTimeOutEvent.onTimeOut(this,request);
+                    return;
+                }
                 throw new RuntimeException(e);
             }
 
@@ -106,4 +116,7 @@ public class Spider {
         consumer.accept(response);
     }
 
+    public void setConnectionTimeOutEvent(ConnectionTimeOutEvent connectionTimeOutEvent) {
+        this.connectionTimeOutEvent = connectionTimeOutEvent;
+    }
 }

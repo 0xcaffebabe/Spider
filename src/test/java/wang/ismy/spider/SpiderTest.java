@@ -2,6 +2,7 @@ package wang.ismy.spider;
 
 import org.junit.Assert;
 import org.junit.Test;
+import wang.ismy.spider.event.ConnectionTimeOutEvent;
 import wang.ismy.spider.request.Request;
 
 import java.io.IOException;
@@ -18,8 +19,11 @@ public class SpiderTest {
 
     public static void main(String[] args) {
         Spider spider = new Spider();
+        spider.setConnectionTimeOutEvent((spider1, request) -> {
+            System.out.println(request.getUrl()+"超时了");
+        });
         Request request = new Request()
-                .url("http://www.baidu.com")
+                .url("https://ismy.wang")
                 .header("User-Agent","baidu spider");
         spider.request(request,response -> {
             System.out.println(response
