@@ -23,7 +23,7 @@ public class SpiderTest {
             System.out.println(request.getUrl()+"超时了");
         });
         Request request = new Request()
-                .url("https://ismy.wang")
+                .url("https://www.imooc.com/u/59654/courses")
                 .header("User-Agent","baidu spider");
         spider.request(request,response -> {
             System.out.println(response
