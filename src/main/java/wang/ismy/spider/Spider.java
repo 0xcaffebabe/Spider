@@ -31,9 +31,9 @@ public class Spider {
 
     private ExecutorService executorService = Executors.newFixedThreadPool(10);
 
-    private boolean close = false;
-
     private ConnectionTimeOutEvent connectionTimeOutEvent = new DefaultConnectionTimeOutEvent();
+
+    private boolean close = false;
 
     public Spider(){
         responseProcessor.registerProcessChain(new WebNotFoundProcessChain());
@@ -95,25 +95,37 @@ public class Spider {
     }
 
     private void sendRequest(Request request, Consumer<Response> consumer) throws IOException {
-        URLConnection connection = spiderHttpClient.send(request.getUrl(),request.getHeaders(),timeOutMS);
-        HttpURLConnection urlConnection = (HttpURLConnection)connection;
-        Response response = new Response();
-        response.setHttpCode(urlConnection.getResponseCode());
-        response.setResponseHeaders(urlConnection.getHeaderFields());
 
+        HttpURLConnection connection = sendRequestAndGetConnection(request);
+        Response response = getResponse(connection);
+        InputStream inputStream = getInputStream(connection);
+        response.setBody(inputStream.readAllBytes());
+        //得到响应之后，该响应会被传入到一个response处理链当中
+        responseProcessor.process(request,response);
+        // 调用传入的消费者代码
+        consumer.accept(response);
+    }
+
+    private InputStream getInputStream(HttpURLConnection connection) {
         InputStream inputStream = null;
 
         try{
             inputStream = connection.getInputStream();
         }catch (Exception e){
-            inputStream = ((HttpURLConnection) connection).getErrorStream();
+            inputStream = connection.getErrorStream();
         }
+        return inputStream;
+    }
 
-        response.setBody(inputStream.readAllBytes());
+    private Response getResponse(HttpURLConnection connection) throws IOException {
+        Response response = new Response();
+        response.setHttpCode(connection.getResponseCode());
+        response.setResponseHeaders(connection.getHeaderFields());
+        return response;
+    }
 
-        //得到响应之后，该响应会被传入到一个response处理链当中
-        responseProcessor.process(request,response);
-        consumer.accept(response);
+    private HttpURLConnection sendRequestAndGetConnection(Request request) throws IOException {
+        return spiderHttpClient.send(request.getUrl(),request.getHeaders(),timeOutMS);
     }
 
     public void setConnectionTimeOutEvent(ConnectionTimeOutEvent connectionTimeOutEvent) {
