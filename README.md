@@ -9,7 +9,7 @@
 2019-1-11
 
 第一个应用：
-```java
+```text
           Spider spider = new Spider();
           Request request = new Request();
           request.setUrl("http://www.sina.com");
