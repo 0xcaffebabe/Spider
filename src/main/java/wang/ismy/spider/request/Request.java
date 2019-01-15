@@ -3,6 +3,7 @@ package wang.ismy.spider.request;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import wang.ismy.spider.enums.RequestMethods;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,6 +11,8 @@ import java.util.Map;
 
 @Data
 public class Request {
+
+    private RequestMethods requestMethods = RequestMethods.GET;
 
     private String url;
 
@@ -29,6 +32,11 @@ public class Request {
 
     public Request body(String body){
         this.body = body;
+        return this;
+    }
+
+    public Request method(RequestMethods requestMethods){
+        this.requestMethods = requestMethods;
         return this;
     }
 

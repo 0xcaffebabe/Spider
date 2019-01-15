@@ -17,6 +17,8 @@ import java.net.SocketTimeoutException;
 import java.net.URLConnection;
 import java.net.http.HttpClient;
 import java.sql.ResultSet;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -123,12 +125,22 @@ public class Spider {
     private Response getResponse(HttpURLConnection connection) throws IOException {
         Response response = new Response();
         response.setHttpCode(connection.getResponseCode());
-        response.setResponseHeaders(connection.getHeaderFields());
+        Headers headers = new Headers();
+        Map<String,List<String>> rowHeaders = connection.getHeaderFields();
+        for (String key : rowHeaders.keySet()){
+            List<String> values = rowHeaders.get(key);
+            StringBuilder sb = new StringBuilder();
+            for (String value : values){
+                sb.append(value).append(";");
+            }
+            headers.header(key,sb.substring(0,sb.length()-1));
+        }
+        response.setResponseHeaders(headers);
         return response;
     }
 
     private HttpURLConnection sendRequestAndGetConnection(Request request) throws IOException {
-        return spiderHttpClient.send(request.getUrl(),request.getHeaders(),timeOutMS);
+        return spiderHttpClient.send(request,timeOutMS);
     }
 
     public void setConnectionTimeOutEvent(ConnectionTimeOutEvent connectionTimeOutEvent) {

@@ -18,12 +18,14 @@ public class SpiderHttpClient {
 
     }
 
-    public HttpURLConnection send(String url, Map<String,String> headers, int timeOutMS) throws IOException {
-        URLConnection connection = new URL(url).openConnection();
+    public HttpURLConnection send(Request request,int timeOutMS) throws IOException {
+
+        HttpURLConnection connection = (HttpURLConnection) new URL(request.getUrl()).openConnection();
+        connection.setRequestMethod(request.getRequestMethods().getMethod());
         connection.setConnectTimeout(timeOutMS);
-        for (String key : headers.keySet()){
-            connection.setRequestProperty(key,headers.get(key));
+        for (String key : request.getHeaders().keySet()){
+            connection.setRequestProperty(key,request.getHeaders().get(key));
         }
-        return (HttpURLConnection) connection;
+        return connection;
     }
 }

@@ -14,7 +14,7 @@ public class MovedTemporarilyProcessChain implements ResponseProcessChain {
     public void process(Request request, Response response, Spider spider) {
 
         if (response.getHttpCode() == HttpState.MOVED_TEMP.getCode()){
-            String newLocation = response.getResponseHeaders().get("Location").get(0);
+            String newLocation = response.getResponseHeaders().getHeaders().get("Location");
             request.setUrl(newLocation);
             spider.request(request, response::copy,false);
 

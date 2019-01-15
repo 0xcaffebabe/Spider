@@ -6,20 +6,49 @@
 项目用的JDK版本为11，并且使用了一些JDK11的新特性，运行低于JDK11可能会出现异常
 
 #
-2019-1-11
+2019-1-15
 
-第一个应用：
+一个简单应用：
 ```java
-        Spider spider = new Spider();
-        Request request = new Request()
-                .url("http://www.baidu.com")
-                .header("User-Agent","baidu spider");
-        spider.request(request,response -> {
-            System.out.println(response
-                    .toTextResponse("utf8"));
-        });
+     private static Spider spider = new Spider();
+         private static Map<String,String> map = new HashMap<>();
+         public static void main(String[] args) {
+     
+             spider.setConnectionTimeOutEvent((spider1, request) -> {
+                 System.out.println(request.getUrl()+"超时了");
+             });
+             Request request = new Request()
+                     .url("http://dytt8.net/")
+                     .method(RequestMethods.GET);
+             request(request);
+     
+         }
+     
+         public static void request(Request request){
+            spider.request(request,response -> {
+                response.toTextResponse("gb2312")
+                        .css("td[style=WORD-WRAP: break-word] a")
+                        .forEach(e->{
+                            System.out.println(e.attr("href"));
+                        });
+                response.toTextResponse("gb2312")
+                        .css("a")
+                        .forEach(e->{
+                            String url = null;
+                            if (!e.attr("href").startsWith("http://")){
+                                url = "http://dytt8.net"+e.attr("href");
+                            }else{
+                                url = e.attr("href");
+                            }
+                            Request subRequest = new Request()
+                                    .url(url);
+                            request(subRequest);
+                        });
+            });
+         }
 ```
 
+![avatar](https://ismy1.oss-cn-qingdao.aliyuncs.com/gif8.gif)
 #
 扩展：
 

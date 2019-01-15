@@ -1,17 +1,14 @@
 package wang.ismy.spider.response;
 
 import lombok.Data;
-
-import java.util.Calendar;
-import java.util.List;
-import java.util.Map;
+import wang.ismy.spider.Headers;
 
 @Data
 public class Response {
 
     private int httpCode;
 
-    private Map<String,List<String>> responseHeaders;
+    private Headers responseHeaders;
 
     private byte[] body;
 
