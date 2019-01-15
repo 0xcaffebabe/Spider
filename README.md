@@ -31,9 +31,7 @@ public interface ResponseProcessChain {
     void process(Request request, Response response, Spider spider);
 }
 ```
-
 在Spider构造函数中进行注册：
-
 ```java
 public Spider(){
         responseProcessor.registerProcessChain(new WebNotFoundProcessChain());
@@ -42,7 +40,29 @@ public Spider(){
 ```
 当一个请求通过request完成之后，会根据注册顺序依次调用相关处理器，
 
+
+  
+
 使用者可以根据自身需要分别对request,response,spider等对象进行修改
+
+2->
+    
+```java
+spider.setConnectionTimeOutEvent((spider1, request) -> {
+            System.out.println(request.getUrl()+"超时了");
+        });
+```
+
+可以向该函数传入一个实现了该接口的事件：
+
+```java
+public interface ConnectionTimeOutEvent {
+
+    void onTimeOut(Spider spider, Request request);
+}
+```
+
+当请求超时，这个事件将会被调用
 #
 如果进行大量爬取操作,该段代码可能会成为性能瓶颈
 ```java
