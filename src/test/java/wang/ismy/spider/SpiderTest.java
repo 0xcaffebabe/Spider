@@ -28,14 +28,23 @@ public class SpiderTest {
             System.out.println(request.getUrl()+"超时了");
         });
         Request request = new Request()
-                .url("http://dytt8.net/")
+                .url("http://tieba.baidu.com/f?ie=utf-8&kw=%E6%B3%89%E5%B7%9E%E5%B8%88%E8%8C%83%E5%AD%A6%E9%99%A2&red_tag=w3212545833")
                 .method(RequestMethods.GET);
-        request(request);
+        spider.request(request,response -> {
+            response.toTextResponse("utf8").css("a").forEach(e->{
+                if (e.text().contains("成绩")){
+                    System.out.println(e.text()+" --- "+ "http://tieba.baidu.com" +e.attr("href"));
+                }
+            });
+            spider.close();
+
+        });
+
 
     }
 
     public static void request(Request request){
-       spider.request(request,response -> {
+           spider.request(request,response -> {
            response.toTextResponse("gb2312")
                    .css("td[style=WORD-WRAP: break-word] a")
                    .forEach(e->{

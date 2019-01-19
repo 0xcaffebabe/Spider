@@ -33,7 +33,7 @@ public class Spider {
 
     private ResponseProcessor responseProcessor = new ResponseProcessor(this); // 响应消息处理链
 
-    private ExecutorService executorService = Executors.newFixedThreadPool(10);
+    private ExecutorService executorService;
 
     private ConnectionTimeOutEvent connectionTimeOutEvent = new DefaultConnectionTimeOutEvent();
 
@@ -42,12 +42,14 @@ public class Spider {
     public Spider(){
         responseProcessor.registerProcessChain(new WebNotFoundProcessChain());
         responseProcessor.registerProcessChain(new MovedTemporarilyProcessChain());
-
+        executorService = Executors.newFixedThreadPool(10);
     }
 
-    public Spider(int timeOutSec) {
+    public Spider(int timeOutSec,int threadQuantity) {
         this.timeOutMS = timeOutSec;
+        executorService = Executors.newFixedThreadPool(threadQuantity);
     }
+
 
     public void request(Request request, Consumer<Response> consumer) {
         if (close){
