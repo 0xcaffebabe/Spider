@@ -12,8 +12,6 @@ import java.util.concurrent.ConcurrentNavigableMap;
 public class SpiderHttpClient {
 
 
-
-
     public SpiderHttpClient() {
 
     }

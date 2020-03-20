@@ -17,6 +17,10 @@ public class Headers {
         return this;
     }
 
+    public String header(String key){
+        return headers.get(key);
+    }
+
     public void forEach(Consumer<Header> consumer){
 
         for (String key : headers.keySet()){
